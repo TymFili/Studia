@@ -1,0 +1,16 @@
+# dune utop
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /home/tymfili/.cache/dune/db
+# Workspace root: /home/tymfili/Desktop/MP/z6/fun
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/tymfili/.opam/default/bin/ocamlc.opt -config > /tmp/dune_8f5de1_output

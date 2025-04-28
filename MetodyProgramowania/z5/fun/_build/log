@@ -1,0 +1,24 @@
+# dune utop
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /home/tymfili/.cache/dune/db
+# Workspace root: /home/tymfili/Desktop/MP/z5/fun
+# Auto-detected concurrency: 12
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /home/tymfili/.opam/default/bin/ocamlc.opt -config > /tmp/dune_b3134b_output
+$ (cd _build/.sandbox/c246b7d3f5cef3118a310a92be8ad602/default && /home/tymfili/.opam/default/bin/menhir src/parser.mly --base src/parser --infer-write-query src/parser__mock.ml.mock)
+$ (cd _build/default && /home/tymfili/.opam/default/bin/ocamldep.opt -modules -impl src/parser__mock.ml.mock) > _build/default/src/.fun.objs/parser__mock.impl.d
+$ (cd _build/.sandbox/646fd41897e2dbab582d8b8cc3493e63/default && /home/tymfili/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.fun.objs/byte -open Fun -short-paths -i -impl src/parser__mock.ml.mock) > _build/.sandbox/646fd41897e2dbab582d8b8cc3493e63/default/src/parser__mock.mli.inferred
+$ (cd _build/.sandbox/6e7167d9d394aeec4a7f8234d46a7d7b/default && /home/tymfili/.opam/default/bin/menhir src/parser.mly --base src/parser --infer-read-reply src/parser__mock.mli.inferred)
+$ (cd _build/default && /home/tymfili/.opam/default/bin/ocamldep.opt -modules -impl src/parser.ml) > _build/default/src/.fun.objs/fun__Parser.impl.d
+$ (cd _build/default && /home/tymfili/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -bin-annot-occurrences -I src/.fun.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Fun -o src/.fun.objs/byte/fun__Parser.cmo -c -impl src/parser.ml)
+$ (cd _build/default && /home/tymfili/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o src/fun.cma src/.fun.objs/byte/fun.cmo src/.fun.objs/byte/fun__Ast.cmo src/.fun.objs/byte/fun__Parser.cmo src/.fun.objs/byte/fun__Lexer.cmo src/.fun.objs/byte/fun__Interp.cmo)
+$ (cd _build/default && /home/tymfili/.opam/default/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -o .utop/utop.bc /home/tymfili/.opam/default/lib/ocaml/compiler-libs/ocamlcommon.cma /home/tymfili/.opam/default/lib/ocaml/compiler-libs/ocamlbytecomp.cma /home/tymfili/.opam/default/lib/ocaml/compiler-libs/ocamltoplevel.cma /home/tymfili/.opam/default/lib/findlib/findlib.cma /home/tymfili/.opam/default/lib/findlib/findlib_top.cma /home/tymfili/.opam/default/lib/logs/logs.cma /home/tymfili/.opam/default/lib/lwt/lwt.cma /home/tymfili/.opam/default/lib/logs/lwt/logs_lwt.cma /home/tymfili/.opam/default/lib/ocplib-endian/ocplib_endian.cma /home/tymfili/.opam/default/lib/ocplib-endian/bigstring/ocplib_endian_bigstring.cma /home/tymfili/.opam/default/lib/ocaml/unix/unix.cma /home/tymfili/.opam/default/lib/ocaml/threads/threads.cma /home/tymfili/.opam/default/lib/lwt/unix/lwt_unix.cma -I /home/tymfili/.opam/default/lib/lwt/../stublibs /home/tymfili/.opam/default/lib/react/react.cma /home/tymfili/.opam/default/lib/lwt_react/lwt_react.cma /home/tymfili/.opam/default/lib/result/result.cma /home/tymfili/.opam/default/lib/uutf/uutf.cma /home/tymfili/.opam/default/lib/uucp/uucp.cma /home/tymfili/.opam/default/lib/uuseg/uuseg.cma /home/tymfili/.opam/default/lib/zed/zed.cma /home/tymfili/.opam/default/lib/trie/trie.cma /home/tymfili/.opam/default/lib/mew/mew.cma /home/tymfili/.opam/default/lib/mew_vi/mew_vi.cma /home/tymfili/.opam/default/lib/lambda-term/lambda_term.cma -I /home/tymfili/.opam/default/lib/lambda-term/../stublibs /home/tymfili/.opam/default/lib/xdg/xdg.cma -I /home/tymfili/.opam/default/lib/xdg/../stublibs /home/tymfili/.opam/default/lib/utop/uTop.cma src/fun.cma .utop/.utop.eobjs/byte/dune__exe__Utop.cmo -linkall -warn-error -31)

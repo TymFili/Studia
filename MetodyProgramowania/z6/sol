@@ -1,0 +1,11 @@
+interp "let matmult = fun x -> (fun y -> 
+let a = fst x in let b = fst (snd x) in let c = fst (snd (snd x)) in let d = fst (snd (snd (snd x))) in
+let e = fst y in let f = fst (snd y) in let g = fst (snd (snd y)) in let h = fst (snd (snd (snd y))) in
+(a*e + b*g, (a*f + b*h, (c*e+d*g, (c*f+d*h, ()))))) in
+let matrix_id = (1, (0, (0, (1, ())))) in
+let matrix_expt = funrec g x -> (fun y -> if y = 0 then matrix_id else matmult x (g x (y - 1))) in
+let matrix_expt_fast = funrec g x -> (fun y -> if y = 0 then matrix_id else if (y mod 2) = 0 then g (matmult x x) (y / 2) else matmult x (g x (y - 1))) in 
+let fib_matrix = fun x -> matrix_expt (1, (1, (1, (0, ())))) x in
+let fib_matrix_fast = fun x -> matrix_expt_fast (1, (1, (1, (0, ())))) x in
+fib_matrix 5";;
+
