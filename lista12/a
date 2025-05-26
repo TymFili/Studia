@@ -1,0 +1,126 @@
+Require Import List.
+
+Theorem T1 : forall (A B C : Type) (f : B -> C) (g : A -> B) (l : list A),
+  map f (map g l) = map (fun x => f (g x)) l.
+Proof.
+  induction l.
+  reflexivity.
+  simpl.
+  rewrite IHl.
+  reflexivity.
+Qed.
+
+Lemma append_nil_r : forall (A : Type) (l : list A),
+  l ++ nil = l.
+Proof.
+  induction l.
+  simpl.
+  reflexivity.
+  simpl.
+  rewrite IHl.
+  reflexivity.
+Qed.
+
+Lemma append_nil_l : forall (A : Type) (l : list A),
+  nil ++ l = l.
+Proof.
+  induction l.
+  apply append_nil_r.
+  simpl.
+  reflexivity.
+Qed.
+
+Lemma append_assoc : forall (A : Type) (k l m : list A),
+  (k ++ l) ++ m = k ++ (l ++ m).
+Proof.
+  intros A k l m.
+  induction k.
+  simpl.
+  reflexivity.
+  simpl.
+  rewrite IHk.
+  reflexivity.
+Qed.
+
+Definition Peirce : (forall P, ~~P -> P) -> (forall P Q, ((P -> Q) -> P) -> P) :=
+  fun nn P Q H => nn P (fun nP => nP (H (fun p => match nP p with end))).
+
+Lemma rev_append_spec : forall (A : Type) (k l : list A),
+  (rev k) ++ l = rev_append k l.
+Proof.
+  intros A k.
+  induction k.
+  simpl.
+  reflexivity.
+  simpl.
+  intro l.
+  rewrite <- IHk.
+  rewrite append_assoc.
+  simpl.
+  reflexivity.
+Qed.
+
+Lemma rev_app_distr : forall (A : Type) (k l : list A),
+  rev (k ++ l) = rev l ++ rev k.
+Proof.
+  intros A k.
+  induction k.
+  simpl.
+  intro l.
+  rewrite append_nil_r.
+  reflexivity.
+  simpl.
+  intro l.
+  rewrite IHk.
+  rewrite append_assoc.
+  reflexivity.
+Qed.
+
+Theorem T2 : forall (A : Type) (l : list A),
+  rev (rev l) = l.
+Proof.
+  intros A l.
+  induction l.
+  simpl.
+  reflexivity.
+  simpl.
+  rewrite rev_app_distr.
+  rewrite IHl.
+  simpl.
+  reflexivity.
+Qed.
+
+Lemma rev'_app : forall (A : Type) (k l : list A),
+  rev' (k ++ l) = rev' l ++ rev' k.
+Proof.
+  intros A k l.
+  induction k.
+  simpl.
+  rewrite app_nil_r.
+  reflexivity.
+  simpl.
+  rewrite IHk.
+  rewrite app_assoc.
+  reflexivity.
+Qed.
+
+Theorem rev'_rev' : forall (A : Type) (xs : list A),
+  rev' (rev' xs) = xs.
+Proof.
+  intros A xs.
+  induction xs as [|x xs' IH].
+  - simpl. reflexivity.
+  - simpl. rewrite rev'_app. simpl. rewrite IH. reflexivity.
+Qed.
+
+Theorem nn_implies_pl : forall (P : Prop),
+  (~~P -> P) -> ((~P -> P) -> P).
+Proof.
+  intro P.
+  intro nn.
+  intro cont.
+  apply nn.
+  intro notp.
+  pose proof (cont notp) as p.
+  contradiction.
+Qed.
